@@ -1,0 +1,9 @@
+pft/
+*.o
+*.a
+*~
+*.so
+obj/
+*.dSYM/
+*.out.*
+a.out
