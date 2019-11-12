@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 09:57:15 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 13:58:51 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/12 15:46:00 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	ft_print_string(t_conv *conv, va_list a_list, int *nprint)
 	int		len;
 
 	str = va_arg(a_list, char *);
-	len = ft_strlen(str);
 	if (!str)
 		str = "(null)";
+	len = ft_strlen(str);
 	if (conv->precision > len || conv->precision == -2)
 		conv->precision = len;
 	if (conv->leftj)

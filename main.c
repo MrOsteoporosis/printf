@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:58:58 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 13:41:24 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/12 15:45:02 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(void)
 	char	str[] = "hello";
 
 	//String tests, printf unit test gives garbled trash results on some tests
-	ft_printf("%i\n", i1);
+	ft_printf("hello, %s.", NULL);
 	// ft_printf("^.^/%-2.24s^.^/\n", "The Game.");
 	// printf("^.^/%-2.24s^.^/\n", "The Game.");
 	// ft_printf("42%-30.32s42\n", "");

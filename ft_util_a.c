@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 13:46:17 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 14:13:42 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/12 15:21:42 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	ft_putnbr_n_fd(int i, int *nprint)
 		temp = temp / 10;
 		pow = pow * 10;
 	}
-	if (i < 0)
-		ft_putchar_n_fd('-', 1, nprint);
 	if (i == 0)
 		ft_putchar_n_fd('0', 1, nprint);
 	while (i)

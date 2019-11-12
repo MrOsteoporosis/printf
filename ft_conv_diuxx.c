@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 10:19:01 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 14:59:12 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/12 15:40:45 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_print_int(t_conv *conv, va_list a_list, int *nprint)
 		conv->precision = len;
 	if (conv->sign && i >= 0 && (conv->padzero || conv->leftj))
 		ft_putchar_n_fd(conv->sign, 1, nprint);
+	if (i < 0 && (conv->padzero || conv->leftj))
+		ft_putchar_n_fd('-', 1, nprint);
 	if (conv->leftj)
 	{
 		ft_pad_width(conv->precision, len, '0', nprint);
@@ -38,9 +40,11 @@ void	ft_print_int(t_conv *conv, va_list a_list, int *nprint)
 		ft_pad_width(conv->width, conv->precision, ' ', nprint);
 	if (!conv->leftj)
 	{
-		ft_pad_width(conv->precision, len, '0', nprint);
 		if (conv->sign && i >= 0 && !conv->padzero)
 			ft_putchar_n_fd(conv->sign, 1, nprint);
+		if (i < 0 && !conv->padzero)
+			ft_putchar_n_fd('-', 1, nprint);
+		ft_pad_width(conv->precision, len, '0', nprint);
 		ft_putnbr_n_fd(i, nprint);
 	}
 }
