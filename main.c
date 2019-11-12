@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:58:58 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/11 14:22:43 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/12 13:41:24 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int		main(void)
 {
-	int 	i1 = 3;
+	int 	i1 = 3456;
 	int		i2 = 1;
 	int		*n1 = &i1;
 	int		*n2 = &i2;
@@ -25,15 +25,15 @@ int		main(void)
 	char	str[] = "hello";
 
 	//String tests, printf unit test gives garbled trash results on some tests
-	ft_printf("^.^/%-2.24s^.^/\n", "The Game.");
-	printf("^.^/%-2.24s^.^/\n", "The Game.");
-	ft_printf("42%-30.32s42\n", "");
-	printf("42%-30.32s42\n", "");
-	ft_printf("42%-.2s42\n", "(null)");
-	printf("42%-.2s42\n", "(null)");
-	printf("%d\n", ft_printf(">------------<%.2s>------------<\n", "(null)"));
-	printf("%d\n", printf(">------------<%.2s>------------<\n", "(null)"));
-
-	ft_printf("heres string |%10s|, and one more |%-*c|\n", str, i1, c);
-	printf("heres string |%10s|, and one more |%-*c| also pointer |%p|\n", str, i1, c, n1);
+	ft_printf("%i\n", i1);
+	// ft_printf("^.^/%-2.24s^.^/\n", "The Game.");
+	// printf("^.^/%-2.24s^.^/\n", "The Game.");
+	// ft_printf("42%-30.32s42\n", "");
+	// printf("42%-30.32s42\n", "");
+	// ft_printf("42%-.2s42\n", "(null)");
+	// printf("42%-.2s42\n", "(null)");
+	// printf("%d\n", ft_printf(">------------<%.2s>------------<\n", "(null)"));
+	// printf("%d\n", printf(">------------<%.2s>------------<\n", "(null)"));
+	// ft_printf("heres string |%10s|, and one more |%-*c|\n", str, i1, c);
+	// printf("heres string |%10s|, and one more |%-*c| also pointer |%p|\n", str, i1, c, n1);
 }

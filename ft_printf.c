@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/11 14:09:12 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/12 15:01:57 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_init_conv_vars(t_conv *conv)
 /*
 **	function finds and assigns relevent flag value in conv struct
 **	returns pointer to last char of flag section
+**	dont forget format gets incr after return
 */
 
 void	ft_identify_flag(const char **format, t_conv *conv)
@@ -45,16 +46,15 @@ void	ft_identify_flag(const char **format, t_conv *conv)
 		conv->width = -1;
 	else if (ft_isdigit(**format))
 		conv->width = ft_atoi(*format);
+	else if (**format == '.' && *(*format + 1) == '*')
+		conv->precision = -1;
+	else if (**format == '.' && ft_isdigit(*(*format + 1)))
+		conv->precision = ft_atoi(*format + 1);
 	else if (**format == '.')
-	{
-		if (*(*format + 1) == '*')
-			conv->precision = -1;
-		else if (ft_isdigit(*(*format + 1)))
-			conv->precision = ft_atoi(*format + 1);
-		else
-			conv->precision = 0;
+		conv->precision = 0;
+	if (**format == '.' &&
+		(*(*format + 1) == '*' || ft_isdigit(*(*format + 1))))
 		*format = *format + 1;
-	}
 	if (conv->precision != -2 || conv->width != 0)
 		while (ft_isdigit(*(*format)) && ft_isdigit(*(*format + 1)))
 			*format = *format + 1;
@@ -68,10 +68,12 @@ void	ft_set_conv_vars(const char **format, t_conv *conv)
 {
 	char	*types;
 
+	if (ft_spotter(format, conv))
+		return ;
 	*format = *format + 1;
 	while (**format)
 	{
-		types = "cspdiUxXnfeg%";
+		types = "cspdiuxXnfeg%";
 		while (*types)
 		{
 			if (**format == *types)
@@ -82,6 +84,8 @@ void	ft_set_conv_vars(const char **format, t_conv *conv)
 			types++;
 		}
 		ft_identify_flag(format, conv);
+		if (ft_spotter(format, conv))
+			return ;
 		*format = *format + 1;
 	}
 }
@@ -96,7 +100,7 @@ void	ft_call_converter(t_conv *conv, va_list a_list, int *nprint)
 	t_cfunc	funcs[13];
 	int		i;
 
-	types = "cspdiUxXnfeg%";
+	types = "cspdiuxXnfeg%";
 	funcs[0] = &ft_print_char;
 	funcs[1] = &ft_print_string;
 	funcs[2] = &ft_print_pointer;
@@ -138,18 +142,21 @@ int		ft_printf(const char *format, ...)
 		{
 			ft_init_conv_vars(&conv);
 			ft_set_conv_vars(&format, &conv);
-			if (conv.width == -1)
-				conv.width = va_arg(a_list, int);
-			if (conv.precision == -1)
-				conv.precision = va_arg(a_list, int);
-			ft_call_converter(&conv, a_list, &nprint);
-			// printf("\n	type: %c\n", conv.type);
-			// printf("	width: %d\n", conv.width);
-			// printf("	precision: %d\n", conv.precision);
-			// printf("	hash: %d\n", conv.hash);
-			// printf("	leftj: %d\n", conv.leftj);
-			// printf("	padzero: %d\n", conv.padzero);
-			// printf("	sign: %c\n", conv.sign);
+			if (conv.type)
+			{
+				if (conv.width == -1)
+					conv.width = va_arg(a_list, int);
+				if (conv.precision == -1)
+					conv.precision = va_arg(a_list, int);
+				ft_call_converter(&conv, a_list, &nprint);
+				// printf("\n	type: %c\n", conv.type);
+				// printf("	width: %d\n", conv.width);
+				// printf("	precision: %d\n", conv.precision);
+				// printf("	hash: %d\n", conv.hash);
+				// printf("	leftj: %d\n", conv.leftj);
+				// printf("	padzero: %d\n", conv.padzero);
+				// printf("	sign: %c\n", conv.sign);
+			}
 		}
 		format++;
 	}

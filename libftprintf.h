@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:47:49 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/11 13:49:40 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/12 14:33:37 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ void			ft_print_science(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_compact_float(t_conv *conv, va_list a_list,
 										int *nprint);
 void			ft_print_percent(t_conv *conv, va_list a_list, int *nprint);
-void			ft_putnstr_fd(char *str, int fd, int n, int *nprint);
+void			ft_putnstr_n_fd(char *str, int fd, int n, int *nprint);
+void			ft_putchar_n_fd(char c, int fd, int *nprint);
+void			ft_putnbr_n_fd(int i, int *nprint);
 void			ft_pad_width(int width, int precision, int pad, int *nprint);
+int				ft_spotter(const char **format, t_conv *conv);
+int				ft_putnbr_size(int i, t_conv *conv);
 #endif
