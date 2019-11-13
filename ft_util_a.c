@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 13:46:17 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 13:32:01 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 14:40:34 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,6 @@ void	ft_putchar_n_fd(char c, int fd, int *nprint)
 {
 	ft_putchar_fd(c, fd);
 	*nprint = *nprint + 1;
-}
-
-void	ft_putnbr_n_fd(int i, int *nprint)
-{
-	int		temp;
-	int		pow;
-
-	temp = i;
-	pow = 1;
-	while (temp / 10)
-	{
-		temp = temp / 10;
-		pow = pow * 10;
-	}
-	if (i == 0)
-		ft_putchar_n_fd('0', 1, nprint);
-	while (i)
-	{
-		ft_putchar_n_fd(((i < 0) ? '0' - i / pow : '0' + i / pow), 1, nprint);
-		i = i % pow;
-		pow = pow / 10;
-	}
 }
 
 void	ft_pad_width(int width, int precision, int pad, int *nprint)

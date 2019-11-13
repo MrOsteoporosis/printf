@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:58:58 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 12:17:51 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 15:31:34 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ int		main(void)
 	char	str[] = "hello";
 
 	//String tests, printf unit test gives garbled trash results on some tests
-	ft_printf("ME: %05i %%05i\n", 43);
-	printf("C : %05i\n", 43);
-	ft_printf("ME: %07i %%07i\n", -54);
-	printf("C : %07i\n", -54);
-	ft_printf("ME: %08.5i %%08.5i\n", 34);
-	printf("C : %08.5i\n", 34);
-	ft_printf("ME: %010.5i %%010.5i\n", -216);
-	printf("C : %010.5i\n", -216);
-	ft_printf("ME: %08.5i %%08.5i\n", 0);
-	printf("C : %08.5i\n", 0);
+	ft_printf("ME: |%#7x| 		%%#7x\n", 32);
+	printf("C : |%#7x|\n", 32);
+	ft_printf("ME: |%#5x|		%%#5x\n", 52625);
+	printf("C : |%#5x|\n", 52625);
+	ft_printf("ME: |%#-7x|		%%#-7x\n", 33);
+	printf("C : |%#-7x|\n", 33);
+	ft_printf("ME: |%#.5x|		%%#.5x\n", 21);
+	printf("C : |%#.5x|\n", 21);
+	ft_printf("ME: |%#05x|		%%#05x\n", 43);
+	printf("C : |%#05x|\n", 43);
+	ft_printf("ME: |%#8.5x|		%%#8.5x\n", 34);
+	printf("C : |%#8.5x|\n", 34);
 	// ft_printf("^.^/%-2.24s^.^/\n", "The Game.");
 	// printf("^.^/%-2.24s^.^/\n", "The Game.");
 	// ft_printf("42%-30.32s42\n", "");

@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 12:49:24 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 15:07:34 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_identify_flag(const char **format, t_conv *conv)
 		conv->sign = **format;
 		conv->hassign = 1;
 	}
+	else if (**format == '#')
+		conv->hash = 1;
 	else if (**format == '*')
 		conv->width = -1;
 	else if (ft_isdigit(**format))
@@ -162,7 +164,7 @@ int		ft_printf(const char *format, ...)
 				// printf("	padzero: %d\n", conv.padzero);
 				// printf("	sign: %c\n", conv.sign);
 				// printf("	hassign: %d\n", conv.hassign);
-				// printf("	length: %d\n", conv.length)
+				// printf("	length: %d\n", conv.length);
 			}
 		}
 		format++;
