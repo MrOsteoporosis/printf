@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 13:54:34 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 15:39:38 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 13:32:06 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		ft_putnbr_size(int i, t_conv *conv)
 
 	temp = i;
 	size = 0;
-	if (i < 0 || conv->sign)
-		size++;
+	// if (i < 0 || conv->sign)
+	// 	size++;
 	if (i == 0)
 		size++;
 	while (temp)

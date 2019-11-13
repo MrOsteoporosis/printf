@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:47:49 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 14:33:37 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 12:51:55 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct	s_conv
 	int		padzero;
 	int		hash;
 	char	sign;
+	int		hassign;
+	int		length;
 }				t_conv;
 typedef void	(*t_cfunc)(t_conv *, va_list, int *);
 int				ft_printf(const char *format, ...);

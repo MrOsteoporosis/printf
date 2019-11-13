@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 09:57:15 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 15:46:00 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 12:49:55 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ void	ft_print_char(t_conv *conv, va_list a_list, int *nprint)
 void	ft_print_string(t_conv *conv, va_list a_list, int *nprint)
 {
 	char	*str;
-	int		len;
 
 	str = va_arg(a_list, char *);
 	if (!str)
 		str = "(null)";
-	len = ft_strlen(str);
-	if (conv->precision > len || conv->precision == -2)
-		conv->precision = len;
+	conv->length = ft_strlen(str);
+	if (conv->precision > conv->length || conv->precision == -2)
+		conv->precision = conv->length;
 	if (conv->leftj)
 		ft_putnstr_n_fd(str, 1, conv->precision, nprint);
 	ft_pad_width(conv->width, conv->precision, ' ', nprint);

@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/12 15:01:57 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 12:49:24 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_init_conv_vars(t_conv *conv)
 	conv->precision = -2;
 	conv->width = 0;
 	conv->sign = 0;
+	conv->hassign = 0;
+	conv->length = 0;
 }
 
 /*
@@ -41,7 +43,10 @@ void	ft_identify_flag(const char **format, t_conv *conv)
 	else if (**format == '0')
 		conv->padzero = 1;
 	else if (**format == '+' || **format == ' ')
+	{
 		conv->sign = **format;
+		conv->hassign = 1;
+	}
 	else if (**format == '*')
 		conv->width = -1;
 	else if (ft_isdigit(**format))
@@ -156,6 +161,8 @@ int		ft_printf(const char *format, ...)
 				// printf("	leftj: %d\n", conv.leftj);
 				// printf("	padzero: %d\n", conv.padzero);
 				// printf("	sign: %c\n", conv.sign);
+				// printf("	hassign: %d\n", conv.hassign);
+				// printf("	length: %d\n", conv.length)
 			}
 		}
 		format++;
