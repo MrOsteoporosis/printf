@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:47:49 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 15:54:53 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/13 15:58:49 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,4 @@ void			ft_puthex_lower_n_fd(unsigned int i, int *nprint);
 void			ft_puthex_upper_n_fd(unsigned int i, int *nprint);
 void			ft_pad_width(int width, int precision, int pad, int *nprint);
 int				ft_spotter(const char **format, t_conv *conv);
-double			ft_doublemod(double a, double b);
 #endif
