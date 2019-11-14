@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:55:12 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 15:58:45 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/14 12:27:04 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ void	ft_puthex_lower_n_fd(unsigned int i, int *nprint)
 		temp = temp / 16;
 		pow = pow * 16;
 	}
-	if (i == 0)
-		ft_putchar_n_fd('0', 1, nprint);
 	temp = i;
-	while (i)
+	while (pow)
 	{
 		ft_putchar_n_fd(hex[i / pow], 1, nprint);
 		i = i % pow;
@@ -57,5 +55,35 @@ void	ft_puthex_lower_n_fd(unsigned int i, int *nprint)
 
 void	ft_puthex_upper_n_fd(unsigned int i, int *nprint)
 {
-	//Lmao
+	unsigned int	temp;
+	unsigned int	pow;
+	char			*hex;
+
+	hex = "0123456789ABCDEF";
+	temp = i;
+	pow = 1;
+	while (temp / 16)
+	{
+		temp = temp / 16;
+		pow = pow * 16;
+	}
+	temp = i;
+	while (pow)
+	{
+		ft_putchar_n_fd(hex[i / pow], 1, nprint);
+		i = i % pow;
+		pow = pow / 16;
+	}
+}
+
+void	ft_prep_hex(t_conv *conv, unsigned int i)
+{
+	conv->length = ft_puthex_size(i, conv);
+	if (conv->precision != -2)
+		conv->padzero = 0;
+	if (i == 0)
+		conv->hash = 0;
+	if (conv->precision == -2 ||
+		(conv->precision < conv->length && conv->precision != 0))
+		conv->precision = conv->length;
 }

@@ -6,13 +6,13 @@
 #    By: averheij <averheij@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/28 12:19:16 by averheij       #+#    #+#                 #
-#    Updated: 2019/11/13 15:00:25 by averheij      ########   odam.nl          #
+#    Updated: 2019/11/14 12:58:05 by averheij      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
 CFILES      =   ft_printf.c ft_conv_csp.c ft_conv_diuxx.c ft_conv_nfeg_bonus.c\
-	ft_util_a.c ft_util_b.c ft_util_c.c
+	ft_util_a.c ft_util_b.c ft_util_c.c ft_util_d.c
 OFILES      =   $(CFILES:.c=.o)
 BONUS_SRCS  =	
 BONUS_CFILES=	$(BONUS_SRCS:%=%.c)

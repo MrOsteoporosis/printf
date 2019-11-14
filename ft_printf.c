@@ -6,29 +6,13 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 15:07:34 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/14 13:00:00 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "libft.h"
 #include <stdio.h>
-
-/*
-**	default conv values
-*/
-
-void	ft_init_conv_vars(t_conv *conv)
-{
-	conv->hash = 0;
-	conv->leftj = 0;
-	conv->padzero = 0;
-	conv->precision = -2;
-	conv->width = 0;
-	conv->sign = 0;
-	conv->hassign = 0;
-	conv->length = 0;
-}
 
 /*
 **	function finds and assigns relevent flag value in conv struct
@@ -62,9 +46,7 @@ void	ft_identify_flag(const char **format, t_conv *conv)
 	if (**format == '.' &&
 		(*(*format + 1) == '*' || ft_isdigit(*(*format + 1))))
 		*format = *format + 1;
-	if (conv->precision != -2 || conv->width != 0)
-		while (ft_isdigit(*(*format)) && ft_isdigit(*(*format + 1)))
-			*format = *format + 1;
+	ft_find_flag_end(format, conv);
 }
 
 /*

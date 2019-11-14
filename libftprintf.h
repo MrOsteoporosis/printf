@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:47:49 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 15:58:49 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/14 12:57:12 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ int				ft_printf(const char *format, ...);
 void			ft_init_conv_vars(t_conv *conv);
 void			ft_set_conv_vars(const char **format, t_conv *conv);
 void			ft_identify_flag(const char **format, t_conv *conv);
+void			ft_find_flag_end(const char **format, t_conv *conv);
 void			ft_call_converter(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_char(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_string(t_conv *conv, va_list a_list, int *nprint);
+void			ft_prep_int(t_conv *conv, int i);
 void			ft_print_pointer(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_int(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_uint(t_conv *conv, va_list a_list, int *nprint);
+void			ft_prep_hex(t_conv *conv, unsigned int i);
 void			ft_print_hex_lower(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_hex_upper(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_count(t_conv *conv, va_list a_list, int *nprint);

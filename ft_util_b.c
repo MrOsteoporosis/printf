@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 13:54:34 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 14:56:42 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/14 12:27:18 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,19 @@ void	ft_putuint_n_fd(unsigned int i, int *nprint)
 		i = i % pow;
 		pow = pow / 10;
 	}
+}
+
+void	ft_prep_int(t_conv *conv, int i)
+{
+	if (i < 0)
+	{
+		conv->hassign = 1;
+		conv->sign = '-';
+	}
+	conv->length = ft_putint_size(i, conv);
+	if (conv->precision != -2)
+		conv->padzero = 0;
+	if (conv->precision == -2 ||
+		(conv->precision < conv->length && conv->precision != 0))
+		conv->precision = conv->length;
 }
