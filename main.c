@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:58:58 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/13 15:31:34 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/14 13:33:18 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,9 @@ int		main(void)
 	char	c = 'h';
 	char	str[] = "hello";
 
-	//String tests, printf unit test gives garbled trash results on some tests
-	ft_printf("ME: |%#7x| 		%%#7x\n", 32);
-	printf("C : |%#7x|\n", 32);
-	ft_printf("ME: |%#5x|		%%#5x\n", 52625);
-	printf("C : |%#5x|\n", 52625);
-	ft_printf("ME: |%#-7x|		%%#-7x\n", 33);
-	printf("C : |%#-7x|\n", 33);
-	ft_printf("ME: |%#.5x|		%%#.5x\n", 21);
-	printf("C : |%#.5x|\n", 21);
-	ft_printf("ME: |%#05x|		%%#05x\n", 43);
-	printf("C : |%#05x|\n", 43);
-	ft_printf("ME: |%#8.5x|		%%#8.5x\n", 34);
-	printf("C : |%#8.5x|\n", 34);
-	// ft_printf("^.^/%-2.24s^.^/\n", "The Game.");
-	// printf("^.^/%-2.24s^.^/\n", "The Game.");
-	// ft_printf("42%-30.32s42\n", "");
-	// printf("42%-30.32s42\n", "");
-	// ft_printf("42%-.2s42\n", "(null)");
-	// printf("42%-.2s42\n", "(null)");
-	// printf("%d\n", ft_printf(">------------<%.2s>------------<\n", "(null)"));
-	// printf("%d\n", printf(">------------<%.2s>------------<\n", "(null)"));
-	// ft_printf("heres string |%10s|, and one more |%-*c|\n", str, i1, c);
-	// printf("heres string |%10s|, and one more |%-*c| also pointer |%p|\n", str, i1, c, n1);
+	ft_printf("%%+04d 42 == %0+04d", 42);
+	// ft_printf("ME: |%#7x| 		%%#7x\n", 32);
+	// printf("C : |%#7x|\n", 32);
+	// ft_printf("ME: |%5d|		%%5d\n", 50);
+	// printf("C : |%5d|\n", 50);
 }

@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 09:57:15 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 12:20:32 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/14 13:38:22 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ void	ft_print_pointer(t_conv *conv, va_list a_list, int *n)
 
 void	ft_print_percent(t_conv *conv, va_list a_list, int *n)
 {
-	int		c;
-
-	c = va_arg(a_list, int);
 	if (conv->precision == -2)
 		conv->precision = 1;
 	if (conv->leftj)

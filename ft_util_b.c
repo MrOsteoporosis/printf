@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 13:54:34 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 12:27:18 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/14 13:23:33 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ void	ft_putint_n_fd(int i, int *nprint)
 		temp = temp / 10;
 		pow = pow * 10;
 	}
-	if (i == 0)
-		ft_putchar_n_fd('0', 1, nprint);
-	while (i)
+	while (pow)
 	{
 		ft_putchar_n_fd(((i < 0) ? '0' - i / pow : '0' + i / pow), 1, nprint);
 		i = i % pow;
@@ -80,9 +78,7 @@ void	ft_putuint_n_fd(unsigned int i, int *nprint)
 		temp = temp / 10;
 		pow = pow * 10;
 	}
-	if (i == 0)
-		ft_putchar_n_fd('0', 1, nprint);
-	while (i)
+	while (pow)
 	{
 		ft_putchar_n_fd('0' + i / pow, 1, nprint);
 		i = i % pow;
