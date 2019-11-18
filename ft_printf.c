@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 13:33:32 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 13:28:33 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ void	ft_identify_flag(const char **format, t_conv *conv)
 		conv->precision = ft_atoi(*format + 1);
 	else if (**format == '.')
 		conv->precision = 0;
-	if (**format == '.' &&
-		(*(*format + 1) == '*' || ft_isdigit(*(*format + 1))))
-		*format = *format + 1;
+	else if (**format == 'l')
+		conv->size = **format;
 	ft_find_flag_end(format, conv);
 }
 
@@ -93,11 +92,11 @@ void	ft_call_converter(t_conv *conv, va_list a_list, int *nprint)
 	funcs[0] = &ft_print_char;
 	funcs[1] = &ft_print_string;
 	funcs[2] = &ft_print_pointer;
-	funcs[3] = &ft_print_int;
-	funcs[4] = &ft_print_int;
-	funcs[5] = &ft_print_uint;
-	funcs[6] = &ft_print_hex_lower;
-	funcs[7] = &ft_print_hex_upper;
+	funcs[3] = &ft_pre_int;
+	funcs[4] = &ft_pre_int;
+	funcs[5] = &ft_pre_uint;
+	funcs[6] = &ft_pre_hex_lower;
+	funcs[7] = &ft_pre_hex_upper;
 	funcs[8] = &ft_print_count;
 	funcs[9] = &ft_print_float;
 	funcs[10] = &ft_print_science;
@@ -147,6 +146,7 @@ int		ft_printf(const char *format, ...)
 				// printf("	sign: %c\n", conv.sign);
 				// printf("	hassign: %d\n", conv.hassign);
 				// printf("	length: %d\n", conv.length);
+				// printf("	size: %d\n", conv.size);
 			}
 		}
 		format++;

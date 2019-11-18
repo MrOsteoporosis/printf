@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_c.c                                        :+:    :+:            */
+/*   ft_util_ll_hex.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/13 14:55:12 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 12:27:04 by averheij      ########   odam.nl         */
+/*   Created: 2019/11/18 13:04:06 by averheij       #+#    #+#                */
+/*   Updated: 2019/11/18 13:18:24 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "stdio.h"
 
-int		ft_puthex_size(unsigned int i, t_conv *conv)
+void	ft_prep_ll_hex(t_conv *conv, unsigned long long i)
 {
-	unsigned int	temp;
-	int				size;
+	conv->length = ft_puthex_ll_size(i, conv);
+	if (conv->precision != -2)
+		conv->padzero = 0;
+	if (i == 0)
+		conv->hash = 0;
+	if (conv->precision == -2 ||
+		(conv->precision < conv->length && conv->precision != 0))
+		conv->precision = conv->length;
+}
+
+int		ft_puthex_ll_size(unsigned long long i, t_conv *conv)
+{
+	unsigned long long	temp;
+	int					size;
 
 	temp = i;
 	size = 0;
@@ -30,11 +41,11 @@ int		ft_puthex_size(unsigned int i, t_conv *conv)
 	return (size);
 }
 
-void	ft_puthex_lower_n_fd(unsigned int i, int *nprint)
+void	ft_puthex_ll_lower_n_fd(unsigned long long i, int *nprint)
 {
-	unsigned int	temp;
-	unsigned int	pow;
-	char			*hex;
+	unsigned long long	temp;
+	unsigned long long	pow;
+	char				*hex;
 
 	hex = "0123456789abcdef";
 	temp = i;
@@ -53,11 +64,11 @@ void	ft_puthex_lower_n_fd(unsigned int i, int *nprint)
 	}
 }
 
-void	ft_puthex_upper_n_fd(unsigned int i, int *nprint)
+void	ft_puthex_ll_upper_n_fd(unsigned long long i, int *nprint)
 {
-	unsigned int	temp;
-	unsigned int	pow;
-	char			*hex;
+	unsigned long long	temp;
+	unsigned long long	pow;
+	char				*hex;
 
 	hex = "0123456789ABCDEF";
 	temp = i;
@@ -74,16 +85,4 @@ void	ft_puthex_upper_n_fd(unsigned int i, int *nprint)
 		i = i % pow;
 		pow = pow / 16;
 	}
-}
-
-void	ft_prep_hex(t_conv *conv, unsigned int i)
-{
-	conv->length = ft_puthex_size(i, conv);
-	if (conv->precision != -2)
-		conv->padzero = 0;
-	if (i == 0)
-		conv->hash = 0;
-	if (conv->precision == -2 ||
-		(conv->precision < conv->length && conv->precision != 0))
-		conv->precision = conv->length;
 }

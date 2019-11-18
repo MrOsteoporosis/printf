@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:58:58 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 13:33:18 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 11:48:50 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int		main(void)
 	char	c = 'h';
 	char	str[] = "hello";
 
-	ft_printf("%%+04d 42 == %0+04d", 42);
-	// ft_printf("ME: |%#7x| 		%%#7x\n", 32);
-	// printf("C : |%#7x|\n", 32);
+	ft_printf("ME: |%li| 		%%li\n", 22337203685477);
+	printf("C : |%li|\n", 22337203685477);
 	// ft_printf("ME: |%5d|		%%5d\n", 50);
 	// printf("C : |%5d|\n", 50);
 }

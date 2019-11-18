@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_b.c                                        :+:    :+:            */
+/*   ft_util_ll_int.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/12 13:54:34 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 13:23:33 by averheij      ########   odam.nl         */
+/*   Created: 2019/11/18 11:37:31 by averheij       #+#    #+#                */
+/*   Updated: 2019/11/18 13:17:15 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_putint_size(int i, t_conv *conv)
+void	ft_prep_ll_int(t_conv *conv, long long i)
 {
-	int		temp;
-	int		size;
+	if (i < 0)
+	{
+		conv->hassign = 1;
+		conv->sign = '-';
+	}
+	conv->length = ft_putint_ll_size(i, conv);
+	if (conv->precision != -2)
+		conv->padzero = 0;
+	if (conv->precision == -2 ||
+		(conv->precision < conv->length && conv->precision != 0))
+		conv->precision = conv->length;
+}
+
+int		ft_putint_ll_size(long long i, t_conv *conv)
+{
+	long long	temp;
+	int			size;
 
 	temp = i;
 	size = 0;
@@ -29,10 +44,10 @@ int		ft_putint_size(int i, t_conv *conv)
 	return (size);
 }
 
-void	ft_putint_n_fd(int i, int *nprint)
+void	ft_putint_ll_n_fd(long long i, int *nprint)
 {
-	int		temp;
-	int		pow;
+	long long	temp;
+	long long	pow;
 
 	temp = i;
 	pow = 1;
@@ -49,10 +64,10 @@ void	ft_putint_n_fd(int i, int *nprint)
 	}
 }
 
-int		ft_putuint_size(unsigned int i, t_conv *conv)
+int		ft_putuint_ll_size(unsigned long long i, t_conv *conv)
 {
-	unsigned int	temp;
-	int				size;
+	unsigned long long	temp;
+	int					size;
 
 	temp = i;
 	size = 0;
@@ -66,10 +81,10 @@ int		ft_putuint_size(unsigned int i, t_conv *conv)
 	return (size);
 }
 
-void	ft_putuint_n_fd(unsigned int i, int *nprint)
+void	ft_putuint_ll_n_fd(unsigned long long i, int *nprint)
 {
-	unsigned int	temp;
-	unsigned int	pow;
+	unsigned long long	temp;
+	unsigned long long	pow;
 
 	temp = i;
 	pow = 1;
@@ -84,19 +99,4 @@ void	ft_putuint_n_fd(unsigned int i, int *nprint)
 		i = i % pow;
 		pow = pow / 10;
 	}
-}
-
-void	ft_prep_int(t_conv *conv, int i)
-{
-	if (i < 0)
-	{
-		conv->hassign = 1;
-		conv->sign = '-';
-	}
-	conv->length = ft_putint_size(i, conv);
-	if (conv->precision != -2)
-		conv->padzero = 0;
-	if (conv->precision == -2 ||
-		(conv->precision < conv->length && conv->precision != 0))
-		conv->precision = conv->length;
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_a.c                                        :+:    :+:            */
+/*   ft_util_put.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 13:46:17 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 12:44:03 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 11:25:57 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,4 @@ void	ft_putchar_n_fd(char c, int fd, int *nprint)
 {
 	ft_putchar_fd(c, fd);
 	*nprint = *nprint + 1;
-}
-
-void	ft_pad_width(int width, int precision, int pad, int *nprint)
-{
-	while (width > precision)
-	{
-		*nprint = *nprint + 1;
-		ft_putchar_fd(pad, 1);
-		width--;
-	}
-}
-
-int		ft_spotter(const char **format, t_conv *conv)
-{
-	if (!*(*format + 1))
-	{
-		conv->type = 0;
-		return (1);
-	}
-	return (0);
-}
-
-void	ft_init_conv_vars(t_conv *conv)
-{
-	conv->hash = 0;
-	conv->leftj = 0;
-	conv->padzero = 0;
-	conv->precision = -2;
-	conv->width = 0;
-	conv->sign = 0;
-	conv->hassign = 0;
-	conv->length = 0;
 }
