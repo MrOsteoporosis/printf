@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_d.c                                        :+:    :+:            */
+/*   ft_util_general.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 12:57:42 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 11:16:21 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 14:01:38 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ void	ft_find_flag_end(const char **format, t_conv *conv)
 	if (conv->precision != -2 || conv->width != 0)
 		while (ft_isdigit(*(*format)) && ft_isdigit(*(*format + 1)))
 			*format = *format + 1;
+}
+
+void	ft_identify_size_flag(const char **format, t_conv *conv)
+{
+	if (**format == 'l' && *(*format + 1) == 'l')
+		conv->size = 'L';
+	else if (**format == 'h' && *(*format + 1) == 'h')
+		conv->size = 'H';
+	else if (**format == 'l' || **format == 'h')
+		conv->size = **format;
 }
 
 void	ft_pad_width(int width, int precision, int pad, int *nprint)

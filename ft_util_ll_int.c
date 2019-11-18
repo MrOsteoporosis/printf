@@ -6,20 +6,22 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 11:37:31 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 13:17:15 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 14:28:53 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_prep_ll_int(t_conv *conv, long long i)
+void	ft_prep_ll_int(t_conv *conv, long long *i)
 {
-	if (i < 0)
+	if (conv->size == 'l')
+		*i = (long)*i;
+	if (*i < 0)
 	{
 		conv->hassign = 1;
 		conv->sign = '-';
 	}
-	conv->length = ft_putint_ll_size(i, conv);
+	conv->length = ft_putint_ll_size(*i, conv);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||

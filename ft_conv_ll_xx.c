@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 13:11:03 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 13:25:29 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 14:30:09 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_pre_hex_lower(t_conv *conv, va_list a_list, int *n)
 {
-	if (conv->size == 'l')
+	if (conv->size == 'l' || conv->size == 'L')
 		ft_print_ll_hex_lower(conv, a_list, n);
 	else
 		ft_print_hex_lower(conv, a_list, n);
@@ -50,7 +50,7 @@ void	ft_print_ll_hex_lower(t_conv *conv, va_list a_list, int *n)
 
 void	ft_pre_hex_upper(t_conv *conv, va_list a_list, int *n)
 {
-	if (conv->size == 'l')
+	if (conv->size == 'l' || conv->size == 'L')
 		ft_print_ll_hex_upper(conv, a_list, n);
 	else
 		ft_print_hex_upper(conv, a_list, n);

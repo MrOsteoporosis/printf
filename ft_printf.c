@@ -6,19 +6,12 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 13:28:33 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 14:41:24 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "libft.h"
-#include <stdio.h>
-
-/*
-**	function finds and assigns relevent flag value in conv struct
-**	returns pointer to last char of flag section
-**	dont forget format gets incr after return
-*/
 
 void	ft_identify_flag(const char **format, t_conv *conv)
 {
@@ -43,14 +36,9 @@ void	ft_identify_flag(const char **format, t_conv *conv)
 		conv->precision = ft_atoi(*format + 1);
 	else if (**format == '.')
 		conv->precision = 0;
-	else if (**format == 'l')
-		conv->size = **format;
+	ft_identify_size_flag(format, conv);
 	ft_find_flag_end(format, conv);
 }
-
-/*
-**	function matches type and calls identify flag on any flag characters found
-*/
 
 void	ft_set_conv_vars(const char **format, t_conv *conv)
 {
@@ -77,10 +65,6 @@ void	ft_set_conv_vars(const char **format, t_conv *conv)
 		*format = *format + 1;
 	}
 }
-
-/*
-** finds correct conversion function to call
-*/
 
 void	ft_call_converter(t_conv *conv, va_list a_list, int *nprint)
 {

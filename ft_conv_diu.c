@@ -6,18 +6,37 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 10:19:01 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 13:23:18 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/18 14:39:55 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	ft_prep_int(t_conv *conv, int *i)
+{
+	if (conv->size == 'h')
+		*i = (short)*i;
+	if (conv->size == 'H')
+		*i = (char)*i;
+	if (*i < 0)
+	{
+		conv->hassign = 1;
+		conv->sign = '-';
+	}
+	conv->length = ft_putint_size(*i, conv);
+	if (conv->precision != -2)
+		conv->padzero = 0;
+	if (conv->precision == -2 ||
+		(conv->precision < conv->length && conv->precision != 0))
+		conv->precision = conv->length;
+}
 
 void	ft_print_int(t_conv *conv, va_list a_list, int *n)
 {
 	int		i;
 
 	i = va_arg(a_list, int);
-	ft_prep_int(conv, i);
+	ft_prep_int(conv, &i);
 	if (conv->hassign && (conv->padzero || conv->leftj))
 		ft_putchar_n_fd(conv->sign, 1, n);
 	if (conv->leftj)
@@ -40,17 +59,26 @@ void	ft_print_int(t_conv *conv, va_list a_list, int *n)
 	}
 }
 
-void	ft_print_uint(t_conv *conv, va_list a_list, int *n)
+void	ft_prep_uint(t_conv *conv, unsigned int *i)
 {
-	unsigned int	i;
-
-	i = va_arg(a_list, unsigned int);
-	conv->length = ft_putuint_size(i, conv);
+	if (conv->size == 'h')
+		*i = (unsigned short)*i;
+	if (conv->size == 'H')
+		*i = (unsigned char)*i;
+	conv->length = ft_putuint_size(*i, conv);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||
 		(conv->precision < conv->length && conv->precision != 0))
 		conv->precision = conv->length;
+}
+
+void	ft_print_uint(t_conv *conv, va_list a_list, int *n)
+{
+	unsigned int	i;
+
+	i = va_arg(a_list, unsigned int);
+	ft_prep_uint(conv, &i);
 	if (conv->leftj)
 	{
 		ft_pad_width(conv->precision, conv->length, '0', n);
