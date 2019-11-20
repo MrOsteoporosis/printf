@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 09:57:15 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/14 13:38:22 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/20 10:09:31 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,41 @@ void	ft_print_string(t_conv *conv, va_list a_list, int *n)
 		conv->precision = conv->length;
 	if (conv->leftj)
 		ft_putnstr_n_fd(str, 1, conv->precision, n);
-	ft_pad_width(conv->width, conv->precision, ' ', n);
+	if (conv->padzero && !conv->leftj)
+		ft_pad_width(conv->width, conv->precision, '0', n);
+	else
+		ft_pad_width(conv->width, conv->precision, ' ', n);
 	if (!conv->leftj)
 		ft_putnstr_n_fd(str, 1, conv->precision, n);
 }
 
 void	ft_print_pointer(t_conv *conv, va_list a_list, int *n)
 {
-	ft_putstr_fd("POINTER", 1);
+	unsigned long ptr;
+
+	ptr = (unsigned long)va_arg(a_list, void*);
+	conv->size = (ft_puthex_ll_size(ptr, conv) + 2);
+	if (conv->precision == -2 ||
+		(conv->precision < conv->size && conv->precision != 0))
+		conv->precision = conv->size;
+	if (conv->leftj)
+	{
+		ft_putnstr_n_fd("0x", 1, 2, n);
+		ft_pad_width(conv->precision,
+			conv->size - ((conv->precision > conv->size) ? 2 : 0), '0', n);
+		if (conv->precision)
+			ft_puthex_ll_lower_n_fd(ptr, n);
+	}
+	(!conv->leftj && conv->padzero) ? ft_pad_width(conv->width, conv->precision,
+		'0', n) : ft_pad_width(conv->width, conv->precision, ' ', n);
+	if (!(conv->leftj))
+	{
+		ft_putnstr_n_fd("0x", 1, 2, n);
+		ft_pad_width(conv->precision,
+			conv->size - ((conv->precision > conv->size) ? 2 : 0), '0', n);
+		if (conv->precision)
+			ft_puthex_ll_lower_n_fd(ptr, n);
+	}
 }
 
 void	ft_print_percent(t_conv *conv, va_list a_list, int *n)

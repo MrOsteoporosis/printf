@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_hex.c                                      :+:    :+:            */
+/*   ft_util_xx.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:55:12 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 13:04:48 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:13:37 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_prep_hex(t_conv *conv, unsigned int i)
+void	ft_prep_hex(t_conv *conv, unsigned int *i)
 {
-	conv->length = ft_puthex_size(i, conv);
+	if (conv->size == 'h')
+		*i = (unsigned short)*i;
+	if (conv->size == 'H')
+		*i = (unsigned char)*i;
+	conv->length = ft_puthex_size(*i, conv);
 	if (conv->precision != -2)
 		conv->padzero = 0;
-	if (i == 0)
+	if (*i == 0)
 		conv->hash = 0;
 	if (conv->precision == -2 ||
 		(conv->precision < conv->length && conv->precision != 0))

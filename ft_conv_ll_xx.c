@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 13:11:03 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 14:30:09 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/20 13:16:20 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_print_ll_hex_lower(t_conv *conv, va_list a_list, int *n)
 	unsigned long long int	i;
 
 	i = va_arg(a_list, unsigned long long int);
-	ft_prep_ll_hex(conv, i);
+	ft_prep_ll_hex(conv, &i);
 	if (conv->hash && i != 0 && (conv->leftj || conv->padzero))
 		ft_putnstr_n_fd("0x", 1, 2, n);
 	if (conv->leftj)
@@ -61,7 +61,7 @@ void	ft_print_ll_hex_upper(t_conv *conv, va_list a_list, int *n)
 	unsigned long long int	i;
 
 	i = va_arg(a_list, unsigned long long int);
-	ft_prep_ll_hex(conv, i);
+	ft_prep_ll_hex(conv, &i);
 	if (conv->hash && i != 0 && (conv->leftj || conv->padzero))
 		ft_putnstr_n_fd("0X", 1, 2, n);
 	if (conv->leftj)

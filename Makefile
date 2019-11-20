@@ -6,14 +6,14 @@
 #    By: averheij <averheij@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/28 12:19:16 by averheij       #+#    #+#                 #
-#    Updated: 2019/11/18 13:27:07 by averheij      ########   odam.nl          #
+#    Updated: 2019/11/20 13:15:38 by averheij      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
 CFILES      =   ft_printf.c ft_conv_csp.c ft_conv_diu.c ft_conv_ll_diu.c\
-	ft_conv_xx.c ft_conv_ll_xx.c ft_util_general.c ft_util_int.c\
-	ft_util_hex.c ft_util_put.c ft_util_ll_int.c ft_util_ll_hex.c\
+	ft_conv_xx.c ft_conv_ll_xx.c ft_util_gen.c ft_util_diu.c\
+	ft_util_xx.c ft_util_cs.c ft_util_ll_diu.c ft_util_ll_xx.c\
 	ft_conv_nfeg_bonus.c
 OFILES      =   $(CFILES:.c=.o)
 BONUS_SRCS  =	
