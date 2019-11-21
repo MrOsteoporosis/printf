@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 10:19:01 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 14:39:55 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/21 14:46:00 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	ft_prep_int(t_conv *conv, int *i)
 		conv->hassign = 1;
 		conv->sign = '-';
 	}
-	conv->length = ft_putint_size(*i, conv);
+	conv->length = ft_putint_size(*i);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||
-		(conv->precision < conv->length && conv->precision != 0))
+		(conv->precision < conv->length && *i != 0))
 		conv->precision = conv->length;
 }
 
@@ -65,11 +65,11 @@ void	ft_prep_uint(t_conv *conv, unsigned int *i)
 		*i = (unsigned short)*i;
 	if (conv->size == 'H')
 		*i = (unsigned char)*i;
-	conv->length = ft_putuint_size(*i, conv);
+	conv->length = ft_putuint_size(*i);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||
-		(conv->precision < conv->length && conv->precision != 0))
+		(conv->precision < conv->length && *i != 0))
 		conv->precision = conv->length;
 }
 

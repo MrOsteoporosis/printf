@@ -7,3 +7,4 @@ obj/
 *.dSYM/
 *.out.*
 a.out
+.DS_Store

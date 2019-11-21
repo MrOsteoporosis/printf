@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_ll_int.c                                   :+:    :+:            */
+/*   ft_util_ll_diu.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 11:37:31 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 14:28:53 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/21 14:49:22 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	ft_prep_ll_int(t_conv *conv, long long *i)
 		conv->hassign = 1;
 		conv->sign = '-';
 	}
-	conv->length = ft_putint_ll_size(*i, conv);
+	conv->length = ft_putint_ll_size(*i);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||
-		(conv->precision < conv->length && conv->precision != 0))
+		(conv->precision < conv->length && *i != 0))
 		conv->precision = conv->length;
 }
 
-int		ft_putint_ll_size(long long i, t_conv *conv)
+int		ft_putint_ll_size(long long i)
 {
 	long long	temp;
 	int			size;
@@ -66,7 +66,7 @@ void	ft_putint_ll_n_fd(long long i, int *nprint)
 	}
 }
 
-int		ft_putuint_ll_size(unsigned long long i, t_conv *conv)
+int		ft_putuint_ll_size(unsigned long long i)
 {
 	unsigned long long	temp;
 	int					size;

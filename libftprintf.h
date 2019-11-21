@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 09:47:49 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/20 13:13:20 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/21 14:52:00 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,8 @@ void			ft_print_ll_hex_lower(t_conv *conv, va_list a_list,
 void			ft_print_hex_upper(t_conv *conv, va_list a_list, int *nprint);
 void			ft_print_ll_hex_upper(t_conv *conv, va_list a_list,
 					int *nprint);
-void			ft_print_count(t_conv *conv, va_list a_list, int *nprint);
-void			ft_print_float(t_conv *conv, va_list a_list, int *nprint);
-void			ft_print_science(t_conv *conv, va_list a_list, int *nprint);
-void			ft_print_compact_float(t_conv *conv, va_list a_list,
-					int *nprint);
-void			ft_print_percent(t_conv *conv, va_list a_list, int *nprint);
+void			ft_print_count(va_list a_list, int *nprint);
+void			ft_print_percent(t_conv *conv, int *nprint);
 
 void			ft_pre_int(t_conv *conv, va_list a_list, int *n);
 void			ft_pre_uint(t_conv *conv, va_list a_list, int *n);
@@ -72,12 +68,12 @@ void			ft_prep_ll_uint(t_conv *conv, unsigned long long *i);
 void			ft_prep_hex(t_conv *conv, unsigned int *i);
 void			ft_prep_ll_hex(t_conv *conv, unsigned long long *i);
 
-int				ft_putint_size(int i, t_conv *conv);
-int				ft_putint_ll_size(long long i, t_conv *conv);
-int				ft_putuint_size(unsigned int i, t_conv *conv);
-int				ft_putuint_ll_size(unsigned long long i, t_conv *conv);
-int				ft_puthex_size(unsigned int i, t_conv *conv);
-int				ft_puthex_ll_size(unsigned long long i, t_conv *conv);
+int				ft_putint_size(int i);
+int				ft_putint_ll_size(long long i);
+int				ft_putuint_size(unsigned int i);
+int				ft_putuint_ll_size(unsigned long long i);
+int				ft_puthex_size(unsigned int i);
+int				ft_puthex_ll_size(unsigned long long i);
 
 void			ft_putchar_n_fd(char c, int fd, int *nprint);
 void			ft_putnstr_n_fd(char *str, int fd, int n, int *nprint);

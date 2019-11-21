@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 14:41:24 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/21 14:47:43 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	ft_set_conv_vars(const char **format, t_conv *conv)
 void	ft_call_converter(t_conv *conv, va_list a_list, int *nprint)
 {
 	char	*types;
-	t_cfunc	funcs[13];
+	t_cfunc	funcs[8];
 	int		i;
 
-	types = "cspdiuxXnfeg%";
+	types = "cspdiuxX";
 	funcs[0] = &ft_print_char;
 	funcs[1] = &ft_print_string;
 	funcs[2] = &ft_print_pointer;
@@ -81,11 +81,10 @@ void	ft_call_converter(t_conv *conv, va_list a_list, int *nprint)
 	funcs[5] = &ft_pre_uint;
 	funcs[6] = &ft_pre_hex_lower;
 	funcs[7] = &ft_pre_hex_upper;
-	funcs[8] = &ft_print_count;
-	funcs[9] = &ft_print_float;
-	funcs[10] = &ft_print_science;
-	funcs[11] = &ft_print_compact_float;
-	funcs[12] = &ft_print_percent;
+	if (conv->type == 'n')
+		ft_print_count(a_list, nprint);
+	if (conv->type == '%')
+		ft_print_percent(conv, nprint);
 	i = 0;
 	while (types[i])
 	{
@@ -121,16 +120,6 @@ int		ft_printf(const char *format, ...)
 				if (conv.precision == -1)
 					conv.precision = va_arg(a_list, int);
 				ft_call_converter(&conv, a_list, &nprint);
-				// printf("\n	type: %c\n", conv.type);
-				// printf("	width: %d\n", conv.width);
-				// printf("	precision: %d\n", conv.precision);
-				// printf("	hash: %d\n", conv.hash);
-				// printf("	leftj: %d\n", conv.leftj);
-				// printf("	padzero: %d\n", conv.padzero);
-				// printf("	sign: %c\n", conv.sign);
-				// printf("	hassign: %d\n", conv.hassign);
-				// printf("	length: %d\n", conv.length);
-				// printf("	size: %d\n", conv.size);
 			}
 		}
 		format++;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_int.c                                      :+:    :+:            */
+/*   ft_util_diu.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 13:54:34 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 14:39:39 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/21 14:39:40 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_putint_size(int i, t_conv *conv)
+int		ft_putint_size(int i)
 {
 	int		temp;
 	int		size;
@@ -49,7 +49,7 @@ void	ft_putint_n_fd(int i, int *nprint)
 	}
 }
 
-int		ft_putuint_size(unsigned int i, t_conv *conv)
+int		ft_putuint_size(unsigned int i)
 {
 	unsigned int	temp;
 	int				size;

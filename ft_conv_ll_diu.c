@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 13:22:22 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 14:40:07 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/21 14:46:11 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	ft_prep_ll_uint(t_conv *conv, unsigned long long *i)
 {
 	if (conv->size == 'l')
 		*i = (unsigned long)*i;
-	conv->length = ft_putuint_ll_size(*i, conv);
+	conv->length = ft_putuint_ll_size(*i);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||
-		(conv->precision < conv->length && conv->precision != 0))
+		(conv->precision < conv->length && *i != 0))
 		conv->precision = conv->length;
 }
 

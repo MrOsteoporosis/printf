@@ -6,18 +6,16 @@
 #    By: averheij <averheij@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/28 12:19:16 by averheij       #+#    #+#                 #
-#    Updated: 2019/11/20 13:15:38 by averheij      ########   odam.nl          #
+#    Updated: 2019/11/21 14:51:45 by averheij      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
-CFILES      =   ft_printf.c ft_conv_csp.c ft_conv_diu.c ft_conv_ll_diu.c\
+CFILES      =   ft_printf.c ft_conv_csp%n.c ft_conv_diu.c ft_conv_ll_diu.c\
 	ft_conv_xx.c ft_conv_ll_xx.c ft_util_gen.c ft_util_diu.c\
-	ft_util_xx.c ft_util_cs.c ft_util_ll_diu.c ft_util_ll_xx.c\
-	ft_conv_nfeg_bonus.c
+	ft_util_xx.c ft_util_cs.c ft_util_ll_diu.c ft_util_ll_xx.c
 OFILES      =   $(CFILES:.c=.o)
-BONUS_SRCS  =	
-BONUS_CFILES=	$(BONUS_SRCS:%=%.c)
+BONUS_CFILES=	
 BONUS_OFILES=	$(BONUS_CFILES:.c=.o)
 LIBFT_PATH	=	./libft/
 LIBFT_CFILES	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
@@ -30,7 +28,7 @@ LIBFT_CFILES	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 	ft_lstlast_bonus.c ft_lstsize_bonus.c ft_lstdelone_bonus.c\
 	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 LIBFT_OFILES=	$(LIBFT_CFILES:.c=.o)
-FLAGS       =   #-Wall -Werror -Wextra
+FLAGS       =   -Wall -Werror -Wextra
 
 all: $(NAME)
 

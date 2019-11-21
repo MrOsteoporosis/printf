@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_conv_csp.c                                      :+:    :+:            */
+/*   ft_conv_csp%n.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 09:57:15 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/20 10:09:31 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/21 14:48:55 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_print_pointer(t_conv *conv, va_list a_list, int *n)
 	unsigned long ptr;
 
 	ptr = (unsigned long)va_arg(a_list, void*);
-	conv->size = (ft_puthex_ll_size(ptr, conv) + 2);
+	conv->size = (ft_puthex_ll_size(ptr) + 2);
 	if (conv->precision == -2 ||
 		(conv->precision < conv->size && conv->precision != 0))
 		conv->precision = conv->size;
@@ -82,7 +82,7 @@ void	ft_print_pointer(t_conv *conv, va_list a_list, int *n)
 	}
 }
 
-void	ft_print_percent(t_conv *conv, va_list a_list, int *n)
+void	ft_print_percent(t_conv *conv, int *n)
 {
 	if (conv->precision == -2)
 		conv->precision = 1;
@@ -100,4 +100,12 @@ void	ft_print_percent(t_conv *conv, va_list a_list, int *n)
 		*n = *n + 1;
 		ft_putchar_fd('%', 1);
 	}
+}
+
+void	ft_print_count(va_list a_list, int *nprint)
+{
+	int *ptr;
+
+	ptr = va_arg(a_list, int *);
+	*ptr = *nprint;
 }
