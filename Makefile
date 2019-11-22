@@ -6,14 +6,15 @@
 #    By: averheij <averheij@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/28 12:19:16 by averheij       #+#    #+#                 #
-#    Updated: 2019/11/21 14:51:45 by averheij      ########   odam.nl          #
+#    Updated: 2019/11/22 10:39:41 by averheij      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
-CFILES      =   ft_printf.c ft_conv_csp%n.c ft_conv_diu.c ft_conv_ll_diu.c\
-	ft_conv_xx.c ft_conv_ll_xx.c ft_util_gen.c ft_util_diu.c\
-	ft_util_xx.c ft_util_cs.c ft_util_ll_diu.c ft_util_ll_xx.c
+CFILES      =   ft_printf.c ft_conv_csp%n.c ft_conv_diu.c ft_conv_l_diu.c\
+	ft_conv_ll_diu.c ft_conv_xx.c ft_conv_ll_xx.c ft_util_gen.c\
+	ft_util_cs.c ft_util_diu.c ft_util_l_diu.c ft_util_ll_diu.c\
+	ft_util_xx.c ft_util_ll_xx.c
 OFILES      =   $(CFILES:.c=.o)
 BONUS_CFILES=	
 BONUS_OFILES=	$(BONUS_CFILES:.c=.o)
