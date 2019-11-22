@@ -1,17 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_general.c                                  :+:    :+:            */
+/*   ft_util_gen.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 12:57:42 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/18 14:01:38 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/22 11:14:21 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "libft.h"
+
+void	ft_do_conv(const char **format, va_list a_list, t_conv *conv, int *n)
+{
+	ft_init_conv_vars(conv);
+	ft_set_conv_vars(format, conv);
+	if (conv->type)
+	{
+		if (conv->width == -1)
+			conv->width = va_arg(a_list, int);
+		if (conv->precision == -1)
+			conv->precision = va_arg(a_list, int);
+		ft_call_converter(conv, a_list, n);
+	}
+}
+
+void	ft_init_conv_vars(t_conv *conv)
+{
+	conv->hash = 0;
+	conv->leftj = 0;
+	conv->padzero = 0;
+	conv->precision = -2;
+	conv->width = 0;
+	conv->sign = 0;
+	conv->hassign = 0;
+	conv->size = 0;
+	conv->length = 0;
+}
+
+int		ft_spotter(const char **format, t_conv *conv)
+{
+	if (!*(*format + 1))
+	{
+		conv->type = 0;
+		return (1);
+	}
+	return (0);
+}
+
+void	ft_identify_size_flag(const char **format, t_conv *conv)
+{
+	if (**format == 'l' && *(*format + 1) == 'l')
+		conv->size = 'L';
+	else if (**format == 'h' && *(*format + 1) == 'h')
+		conv->size = 'H';
+	else if (**format == 'l' || **format == 'h')
+		conv->size = **format;
+}
 
 void	ft_find_flag_end(const char **format, t_conv *conv)
 {
@@ -27,45 +74,3 @@ void	ft_find_flag_end(const char **format, t_conv *conv)
 			*format = *format + 1;
 }
 
-void	ft_identify_size_flag(const char **format, t_conv *conv)
-{
-	if (**format == 'l' && *(*format + 1) == 'l')
-		conv->size = 'L';
-	else if (**format == 'h' && *(*format + 1) == 'h')
-		conv->size = 'H';
-	else if (**format == 'l' || **format == 'h')
-		conv->size = **format;
-}
-
-void	ft_pad_width(int width, int precision, int pad, int *nprint)
-{
-	while (width > precision)
-	{
-		*nprint = *nprint + 1;
-		ft_putchar_fd(pad, 1);
-		width--;
-	}
-}
-
-int		ft_spotter(const char **format, t_conv *conv)
-{
-	if (!*(*format + 1))
-	{
-		conv->type = 0;
-		return (1);
-	}
-	return (0);
-}
-
-void	ft_init_conv_vars(t_conv *conv)
-{
-	conv->hash = 0;
-	conv->leftj = 0;
-	conv->padzero = 0;
-	conv->precision = -2;
-	conv->width = 0;
-	conv->sign = 0;
-	conv->hassign = 0;
-	conv->size = 0;
-	conv->length = 0;
-}

@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:54:08 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/21 14:47:43 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/22 11:13:45 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,18 +110,7 @@ int		ft_printf(const char *format, ...)
 			nprint++;
 		}
 		else
-		{
-			ft_init_conv_vars(&conv);
-			ft_set_conv_vars(&format, &conv);
-			if (conv.type)
-			{
-				if (conv.width == -1)
-					conv.width = va_arg(a_list, int);
-				if (conv.precision == -1)
-					conv.precision = va_arg(a_list, int);
-				ft_call_converter(&conv, a_list, &nprint);
-			}
-		}
+			ft_do_conv(&format, a_list, &conv, &nprint);
 		format++;
 	}
 	va_end(a_list);

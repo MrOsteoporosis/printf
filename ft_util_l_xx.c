@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_util_ll_xx.c                                    :+:    :+:            */
+/*   ft_util_l_xx.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 13:04:06 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/22 10:46:58 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/22 10:46:43 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_puthex_ll_size(unsigned long long i)
+int		ft_puthex_l_size(unsigned long i)
 {
-	unsigned long long	temp;
-	int					size;
+	unsigned long	temp;
+	int				size;
 
 	temp = i;
 	size = 0;
@@ -29,11 +29,11 @@ int		ft_puthex_ll_size(unsigned long long i)
 	return (size);
 }
 
-void	ft_puthex_ll_lower_n_fd(unsigned long long i, int *nprint)
+void	ft_puthex_l_lower_n_fd(unsigned long i, int *nprint)
 {
-	unsigned long long	temp;
-	unsigned long long	pow;
-	char				*hex;
+	unsigned long	temp;
+	unsigned long	pow;
+	char			*hex;
 
 	hex = "0123456789abcdef";
 	temp = i;
@@ -52,11 +52,11 @@ void	ft_puthex_ll_lower_n_fd(unsigned long long i, int *nprint)
 	}
 }
 
-void	ft_puthex_ll_upper_n_fd(unsigned long long i, int *nprint)
+void	ft_puthex_l_upper_n_fd(unsigned long i, int *nprint)
 {
-	unsigned long long	temp;
-	unsigned long long	pow;
-	char				*hex;
+	unsigned long	temp;
+	unsigned long	pow;
+	char			*hex;
 
 	hex = "0123456789ABCDEF";
 	temp = i;
