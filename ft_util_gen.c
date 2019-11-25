@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 12:57:42 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/22 11:14:21 by averheij      ########   odam.nl         */
+/*   Updated: 2019/11/22 11:35:40 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,3 @@ void	ft_find_flag_end(const char **format, t_conv *conv)
 		while (ft_isdigit(*(*format)) && ft_isdigit(*(*format + 1)))
 			*format = *format + 1;
 }
-
