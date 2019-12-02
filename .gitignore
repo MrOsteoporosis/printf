@@ -8,3 +8,4 @@ obj/
 *.out.*
 a.out
 .DS_Store
+main.c
