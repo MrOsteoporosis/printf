@@ -6,7 +6,7 @@
 #    By: averheij <averheij@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/28 12:19:16 by averheij       #+#    #+#                 #
-#    Updated: 2019/11/22 11:36:05 by averheij      ########   odam.nl          #
+#    Updated: 2019/12/17 12:37:07 by averheij      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(OFILES) $(LIBFT_OFILES:%=./libft/%)
 	@echo "Compiling: $@"
-	ar rc $(NAME) $(OFILES) $(LIBFT_OFILES:%=./libft/%);
+	ar rc $(NAME) $(OFILES) $(LIBFT_OFILES:%=./libft/%)
 	@echo "Done"
 
 %.o: %.c
@@ -48,6 +48,4 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OFILES) $(BONUS_OFILES)
-	ar rc $(NAME) $(OFILES) $(BONUS_OFILES)
-	@echo "Done"
+bonus: all

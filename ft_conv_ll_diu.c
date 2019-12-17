@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 13:22:22 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/22 10:35:51 by averheij      ########   odam.nl         */
+/*   Updated: 2019/12/17 11:11:30 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,23 @@ void	ft_pre_int(t_conv *conv, va_list a_list, int *n)
 		ft_print_l_int(conv, a_list, n);
 	else
 		ft_print_int(conv, a_list, n);
+}
+
+void	ft_prep_ll_int(t_conv *conv, long long *i)
+{
+	if (conv->size == 'l')
+		*i = (long)*i;
+	if (*i < 0)
+	{
+		conv->hassign = 1;
+		conv->sign = '-';
+	}
+	conv->length = ft_putint_ll_size(*i);
+	if (conv->precision != -2)
+		conv->padzero = 0;
+	if (conv->precision == -2 ||
+		(conv->precision < conv->length && *i != 0))
+		conv->precision = conv->length;
 }
 
 void	ft_print_ll_int(t_conv *conv, va_list a_list, int *n)
@@ -48,16 +65,6 @@ void	ft_print_ll_int(t_conv *conv, va_list a_list, int *n)
 		if (conv->precision)
 			ft_putint_ll_n_fd(i, n);
 	}
-}
-
-void	ft_pre_uint(t_conv *conv, va_list a_list, int *n)
-{
-	if (conv->size == 'L')
-		ft_print_ll_uint(conv, a_list, n);
-	else if (conv->size == 'l')
-		ft_print_l_uint(conv, a_list, n);
-	else
-		ft_print_uint(conv, a_list, n);
 }
 
 void	ft_prep_ll_uint(t_conv *conv, unsigned long long *i)

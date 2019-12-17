@@ -6,28 +6,11 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 11:37:31 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/21 14:49:22 by averheij      ########   odam.nl         */
+/*   Updated: 2019/12/17 12:36:39 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-void	ft_prep_ll_int(t_conv *conv, long long *i)
-{
-	if (conv->size == 'l')
-		*i = (long)*i;
-	if (*i < 0)
-	{
-		conv->hassign = 1;
-		conv->sign = '-';
-	}
-	conv->length = ft_putint_ll_size(*i);
-	if (conv->precision != -2)
-		conv->padzero = 0;
-	if (conv->precision == -2 ||
-		(conv->precision < conv->length && *i != 0))
-		conv->precision = conv->length;
-}
 
 int		ft_putint_ll_size(long long i)
 {
@@ -64,6 +47,16 @@ void	ft_putint_ll_n_fd(long long i, int *nprint)
 		i = i % pow;
 		pow = pow / 10;
 	}
+}
+
+void	ft_pre_uint(t_conv *conv, va_list a_list, int *n)
+{
+	if (conv->size == 'L')
+		ft_print_ll_uint(conv, a_list, n);
+	else if (conv->size == 'l')
+		ft_print_l_uint(conv, a_list, n);
+	else
+		ft_print_uint(conv, a_list, n);
 }
 
 int		ft_putuint_ll_size(unsigned long long i)
