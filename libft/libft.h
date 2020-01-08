@@ -6,13 +6,13 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 13:09:52 by averheij       #+#    #+#                */
-/*   Updated: 2019/11/22 11:08:14 by averheij      ########   odam.nl         */
+/*   Updated: 2020/01/08 14:58:45 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
+# include <stddef.h>
 
 size_t			ft_strlen(const char *s);
 int				ft_atoi(const char *str);
